@@ -35,6 +35,8 @@ We had chosen this steering system mainly because of these factors :-
 
   5) Enhanced Maneuverability: In low-speed maneuvering, such as parking and tight turns, Ackermann steering allows for a smaller turning radius, making the vehicle more 
      maneuverable and easier to handle in confined spaces.
+
+The other steering mechanism lacked in atleast 2 of the above factors. So evidently Ackerman's mechanism was our best choice.
   
 # The-Motor- 
   For the motor we have used a single 12 V motor and used a gear box for the mechanism  
