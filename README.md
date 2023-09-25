@@ -11,6 +11,10 @@ Together, Mubeen and Vaishant complement each other's skills and work well as a 
 
 For the chasis we have used a readymade chasis that can support the ackerman's steering mechanism. It is run by a single 12v dc motor.
 
+![chasis measurements](https://probots.co.in/pub/media/catalog/product/cache/d8ddd0f9b0cd008b57085cd218b48832/p/r/probots_metal_smart_racing_platform_for_arduino_raspberry_pi__6.jpeg)
+
+
+
 # The-Mecanism-Used-For-Steering-
 For the steering system we have used the ackerman's steering mechanism. We chose this because this system had satisfied all our expectations and would work best for our robot. We had researched immensely to find the steering system that would be best for our robot. We had tested multiple steering systems like rack and pinion steering, electronic rear motor steering, 4 wheel steering and hydraulic steering. But all of these mechanisms had many setbacks that would slow down our robot. The perfect mechanism was servo based ackerman's steering. It had great speed and accurate turning even on sharp turn's.
 
@@ -49,4 +53,12 @@ spur gears. One large spur gear and one small gear. The small spur gear is conne
 
 ![gear mechanism](https://content.instructables.com/FDT/AYT2/J0X5B6CJ/FDTAYT2J0X5B6CJ.png?auto=webp&frame=1&crop=3:2&width=635&fit=bounds&md=bdf7ff456b0fe795c7630e78b1bd723f)
 
-#
+![chasis with motor image](https://content.instructables.com/F3Z/H6RU/J0X5BVQW/F3ZH6RUJ0X5BVQW.jpg?auto=webp&frame=1&width=565&fit=bounds&md=9b89bec24bffbb2222abf1112e99ae92)
+
+![gear pic](https://probots.co.in/pub/media/catalog/product/cache/d8ddd0f9b0cd008b57085cd218b48832/p/r/probots-4wd-chassis-smart-car-s3003-metal-servo.jpeg)
+
+# The-Wheels-
+
+The robot contains high quality rubber wheels with measurements suitable for the robots size and weight. The wheels measurements are also great for the ackerman's mechanism.
+
+# 
