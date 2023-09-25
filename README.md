@@ -13,6 +13,8 @@ For the steering system we have used the ackerman's steering system we chose thi
 ![steering mechanism](https://content.instructables.com/FA5/WOWE/J0X5B80H/FA5WOWEJ0X5B80H.png?auto=webp&frame=1&crop=3:2&fit=bounds&md=297a80991ec822f92a05d6a451b578e0)
 
 ![servo attachments](https://content.instructables.com/FN1/ERIB/J0X5B8OX/FN1ERIBJ0X5B8OX.png?auto=webp&frame=1&crop=3:2&width=600&fit=bounds&md=e88b77f274aa201ded7625af0a4e7f3a)
+
+![wheel positioning with mechanism](https://content.instructables.com/FG1/ROSG/J0X5BCST/FG1ROSGJ0X5BCST.png?auto=webp&frame=1&crop=3:2&fit=bounds&md=a65c5b56417a30777fa6017183c3aa85)
   
 # The-Motor- 
   For the motor we have used a single 12 V motor and used a gear box for the mechanism  
