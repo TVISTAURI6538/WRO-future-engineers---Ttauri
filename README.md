@@ -7,8 +7,12 @@ Vaishant's strength lies in coding and programming. He is proficient in over fiv
 Together, Mubeen and Vaishant complement each other's skills and work well as a team. They have gained valuable experience from the small competitions they have participated in so far, and they hope that this is just the beginning of bigger things to come.​
 # About-The-Car-
 
+# The-Chassis-
+
+For the chasis we have used a readymade chasis that can support the ackerman's steering mechanism. It is run by a single 12v dc motor.
+
 # The-Mecanism-Used-For-Steering-
-For the steering system we have used the ackerman's steering system we chose this because this system had satisfied all our expectations and would work best for our robot. We had researched immensely to find the steering system that would be best for ou robot. We had tested multiple steering systems like rack and pinion steering, electronic rear motor steering, 4 wheel steering and hydraulic steering. But all of these mechanisms had many setbacks that would slow down our robot. The perfect mechanism was servo based ackerman's steering. It had great speed and accurate turning even on sharp turn's.
+For the steering system we have used the ackerman's steering mechanism. We chose this because this system had satisfied all our expectations and would work best for our robot. We had researched immensely to find the steering system that would be best for our robot. We had tested multiple steering systems like rack and pinion steering, electronic rear motor steering, 4 wheel steering and hydraulic steering. But all of these mechanisms had many setbacks that would slow down our robot. The perfect mechanism was servo based ackerman's steering. It had great speed and accurate turning even on sharp turn's.
 
 ![steering mechanism](https://content.instructables.com/FA5/WOWE/J0X5B80H/FA5WOWEJ0X5B80H.png?auto=webp&frame=1&crop=3:2&fit=bounds&md=297a80991ec822f92a05d6a451b578e0)
 
@@ -36,9 +40,13 @@ We had chosen this steering system mainly because of these factors :-
   5) Enhanced Maneuverability: In low-speed maneuvering, such as parking and tight turns, Ackermann steering allows for a smaller turning radius, making the vehicle more 
      maneuverable and easier to handle in confined spaces.
 
-The other steering mechanism lacked in atleast 2 of the above factors. So evidently Ackerman's mechanism was our best choice.
+The other steering mechanism lacked in atleast 2 of the above factors, So evidently Ackerman's mechanism was our best choice.
   
-# The-Motor- 
-  For the motor we have used a single 12 V motor and used a gear box for the mechanism  
+# The-Movement-Mechanism- 
+
+The movement of the robot is completely based on a single 12v dc motor. This motor controls the rear axle of the robot using gear's. This gear mechanism was made using 2 
+spur gears. One large spur gear and one small gear. The small spur gear is connected to the rear axle of the car, so it is responsible for the rotation of the wheels and the large gear transfers the energy of the motor to the small gear for the wheels to rotate.
+
+![gear mechanism](https://content.instructables.com/FDT/AYT2/J0X5B6CJ/FDTAYT2J0X5B6CJ.png?auto=webp&frame=1&crop=3:2&width=635&fit=bounds&md=bdf7ff456b0fe795c7630e78b1bd723f)
 
 #
