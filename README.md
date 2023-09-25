@@ -27,6 +27,7 @@ For the steering system we have used the ackerman's steering mechanism. We chose
 ![chasis top view](https://content.instructables.com/FME/8EP4/J0X5BMNX/FME8EP4J0X5BMNX.jpg?auto=webp&frame=1&crop=3:2&width=384&height=1024&fit=bounds&md=cba63285974b6d84538d35c6ad2d8a2e)
 
 We had chosen this steering system mainly because of these factors :-
+
   1) Reduced Tire Wear: Ackermann steering geometry helps reduce tire scrubbing during turns. When a vehicle's wheels follow different turning radii, the tires don't slide 
      sideways (as they would in a non-Ackermann system), leading to less tire wear and longer tire life.
 
@@ -57,6 +58,15 @@ spur gears. One large spur gear and one small gear. The small spur gear is conne
 
 # The-Wheels-
 
-The robot contains high quality rubber wheels with measurements suitable for the robots size and weight. The wheels measurements are also great for the ackerman's mechanism.
+The robot contains high quality rubber wheels with measurements suitable for the robots size and weight. The wheels measurements are also great for the ackerman's mechanism. These wheels also have bearings in them to make their movement smoother.
 
-# 
+# Robot-functionality
+
+We have mainly divided the robot's functionality into two main parts, which are :-
+
+  1) Computer Vision - This is mainly for the obstacle challenge. This aspect is controlled by the Raspberry Pi.
+  2) environmental awareness
+  3) obstacle avoidance
+
+
+   
