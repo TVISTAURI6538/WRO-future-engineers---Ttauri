@@ -7,6 +7,11 @@ Vaishant's strength lies in coding and programming. He is proficient in over fiv
 Together, Mubeen and Vaishant complement each other's skills and work well as a team. They have gained valuable experience from the small competitions they have participated in so far, and they hope that this is just the beginning of bigger things to come.​
 # About-The-Car-
 
+# Electromechanical-Components-
+
+
+
+
 # The-Chassis-
 
 For the chasis we have used a readymade chasis that can support the ackerman's steering mechanism. It is run by a single 12v dc motor.
@@ -64,9 +69,56 @@ The robot contains high quality rubber wheels with measurements suitable for the
 
 We have mainly divided the robot's functionality into two main parts, which are :-
 
-  1) Computer Vision - This is mainly for the obstacle challenge. This aspect is controlled by the Raspberry Pi.
-  2) environmental awareness
-  3) obstacle avoidance
+  1) Computer Vision 
+  2) Environmental Awareness 
+  3) Obstacle Avoidance 
+
+1) Computer Vision :-
+
+   The computer vision component of the code is responsible for processing visual information captured by the Raspberry Pi camera module and making navigation decisions 
+   based on the detection of specific colors, namely red and green. The process involves the following key steps:
+
+   a) Frame Capture and Color Space Conversion:
+
+        The code continuously captures video frames from the camera, treating each frame as an image.
+        These frames are converted from the RGB color space to the HSV (Hue, Saturation, Value) color space. HSV separates color information from brightness and saturation.
+  
+   b) Color Detection:
+
+        Specific HSV color ranges are defined to identify red and green objects within the frames. These ranges specify the permissible values for hue, saturation, and 
+        brightness.
+
+   c) Thresholding:
+
+        After converting to HSV, the code applies thresholding to the frames. This process creates binary masks for red and green, where pixels matching the specified 
+        color ranges are highlighted in white, while others are set to black. This binary representation isolates regions where the desired colors are present.
+
+   d) Region of Interest Detection:
+
+        The code identifies regions of interest (ROIs) within the binary masks by detecting connected white regions. ROIs correspond to areas where the red and green 
+        colors are detected.
+
+        Bounding rectangles are computed around these ROIs to define their position and size.
+
+   e) Navigation Decisions:
+
+        Based on the positions of these bounding rectangles within the frames, the code makes navigation decisions for the robot.
+        If a green marker is within a specific x-coordinate range, the code may command the robot to "turn right."
+        If a red marker falls within a certain x-coordinate range, the code may instruct the robot to "turn left."
+        If neither color marker is detected within the specified range, the robot may be directed to "stop."
+
+   f) Visual Feedback:
+
+        The code provides visual feedback by annotating the original camera frames with drawn rectangles and lines. These annotations serve to visually indicate the 
+        detected color regions and the decision-making process in real-time.
+
+   g) Continuous Operation:
+
+        The entire computer vision pipeline operates within a continuous loop. This loop allows the robot to continually adapt and respond to changes in the positions of 
+        the color markers within its environment, enabling real-time color-based navigation.
+
+   
+   
 
 
    
