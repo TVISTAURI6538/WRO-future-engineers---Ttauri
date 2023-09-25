@@ -19,6 +19,22 @@ For the steering system we have used the ackerman's steering system we chose thi
 ![chasis image](https://content.instructables.com/FDU/1WEM/J0X5BMKW/FDU1WEMJ0X5BMKW.jpg?auto=webp&frame=1&width=384&height=1024&fit=bounds&md=2a5c0f83dd895df9d00cbd48b8b6d30f)
 
 ![chasis top view](https://content.instructables.com/FME/8EP4/J0X5BMNX/FME8EP4J0X5BMNX.jpg?auto=webp&frame=1&crop=3:2&width=384&height=1024&fit=bounds&md=cba63285974b6d84538d35c6ad2d8a2e)
+
+We had chosen this steering system mainly because of these factors :-
+  1) Reduced Tire Wear: Ackermann steering geometry helps reduce tire scrubbing during turns. When a vehicle's wheels follow different turning radii, the tires don't slide 
+     sideways (as they would in a non-Ackermann system), leading to less tire wear and longer tire life.
+
+  2) Improved Handling and Stability: Ackermann steering provides better handling and stability during turns. It helps prevent understeer (where the vehicle continues in a 
+     straight line despite steering input) and oversteer (where the rear of the vehicle slides out) by ensuring that all wheels follow their intended paths.
+
+  3) Predictable Steering Response: Vehicles equipped with Ackermann steering have a more predictable and consistent steering response. This is especially important in
+     high-performance vehicles, where precise control is essential.
+
+  4) Safer Cornering: By reducing the likelihood of tire scrubbing and maintaining better traction during turns, Ackermann steering contributes to safer cornering, 
+     especially at higher speeds.
+
+  5) Enhanced Maneuverability: In low-speed maneuvering, such as parking and tight turns, Ackermann steering allows for a smaller turning radius, making the vehicle more 
+     maneuverable and easier to handle in confined spaces.
   
 # The-Motor- 
   For the motor we have used a single 12 V motor and used a gear box for the mechanism  
