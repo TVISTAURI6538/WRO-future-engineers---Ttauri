@@ -69,12 +69,6 @@ The robot contains high quality rubber wheels with measurements suitable for the
 
 We have mainly divided the robot's functionality into two main parts, which are :-
 
-  1) Computer Vision 
-  2) Environmental Awareness 
-  3) Obstacle Avoidance
-
-
-
 1) Computer Vision :-
 
    The computer vision component of the code is responsible for processing visual information captured by the Raspberry Pi camera module and making navigation decisions 
