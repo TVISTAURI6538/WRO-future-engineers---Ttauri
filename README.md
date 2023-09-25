@@ -15,6 +15,10 @@ For the steering system we have used the ackerman's steering system we chose thi
 ![servo attachments](https://content.instructables.com/FN1/ERIB/J0X5B8OX/FN1ERIBJ0X5B8OX.png?auto=webp&frame=1&crop=3:2&width=600&fit=bounds&md=e88b77f274aa201ded7625af0a4e7f3a)
 
 ![wheel positioning with mechanism](https://content.instructables.com/FG1/ROSG/J0X5BCST/FG1ROSGJ0X5BCST.png?auto=webp&frame=1&crop=3:2&fit=bounds&md=a65c5b56417a30777fa6017183c3aa85)
+
+![chasis image](https://content.instructables.com/FDU/1WEM/J0X5BMKW/FDU1WEMJ0X5BMKW.jpg?auto=webp&frame=1&width=384&height=1024&fit=bounds&md=2a5c0f83dd895df9d00cbd48b8b6d30f)
+
+![chasis top view](https://content.instructables.com/FME/8EP4/J0X5BMNX/FME8EP4J0X5BMNX.jpg?auto=webp&frame=1&crop=3:2&width=384&height=1024&fit=bounds&md=cba63285974b6d84538d35c6ad2d8a2e)
   
 # The-Motor- 
   For the motor we have used a single 12 V motor and used a gear box for the mechanism  
