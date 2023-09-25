@@ -18,7 +18,7 @@ For the chasis we have used a readymade chasis that can support the ackerman's s
 
 ![chasis measurements](https://probots.co.in/pub/media/catalog/product/cache/d8ddd0f9b0cd008b57085cd218b48832/p/r/probots_metal_smart_racing_platform_for_arduino_raspberry_pi__6.jpeg)
 
-# The-Mecanism-Used-For-Steering-
+# The-Mechanism-Used-For-Steering-
 For the steering system we have used the ackerman's steering mechanism. We chose this because this system had satisfied all our expectations and would work best for our robot. We had researched immensely to find the steering system that would be best for our robot. We had tested multiple steering systems like rack and pinion steering, electronic rear motor steering, 4 wheel steering and hydraulic steering. But all of these mechanisms had many setbacks that would slow down our robot. The perfect mechanism was servo based ackerman's steering. It had great speed and accurate turning even on sharp turn's.
 
 ![steering mechanism](https://content.instructables.com/FA5/WOWE/J0X5B80H/FA5WOWEJ0X5B80H.png?auto=webp&frame=1&crop=3:2&fit=bounds&md=297a80991ec822f92a05d6a451b578e0)
@@ -71,7 +71,9 @@ We have mainly divided the robot's functionality into two main parts, which are 
 
   1) Computer Vision 
   2) Environmental Awareness 
-  3) Obstacle Avoidance 
+  3) Obstacle Avoidance
+
+
 
 1) Computer Vision :-
 
