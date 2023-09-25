@@ -81,13 +81,13 @@ We have mainly divided the robot's functionality into two main parts, which are 
   
    b) Color Detection:
 
-        Specific HSV color ranges are defined to identify red and green objects within the frames. These ranges specify the permissible values for hue, saturation, and 
+        Specific HSV color ranges are defined to identidfy red and green objects within the frames. These ranges specify the permissible values for hue, saturation, and 
         brightness.
 
    c) Thresholding:
 
         After converting to HSV, the code applies thresholding to the frames. This process creates binary masks for red and green, where pixels matching the specified 
-        color ranges are highlighted in white, while others are set to black. This binary representation isolates regions where the desired colors are present.
+        color ranges are highlighted in white, while others are set to black. This representation isolates regions where the desired colors are present.
 
    d) Region of Interest Detection:
 
@@ -96,17 +96,17 @@ We have mainly divided the robot's functionality into two main parts, which are 
 
         Bounding rectangles are computed around these ROIs to define their position and size.
 
-   e) Navigation Decisions:
+   e) Passing commands or data to Arduino:
 
-        Based on the positions of these bounding rectangles within the frames, the code makes navigation decisions for the robot.
-        If a green marker is within a specific x-coordinate range, the code may command the robot to "turn right."
-        If a red marker falls within a certain x-coordinate range, the code may instruct the robot to "turn left."
-        If neither color marker is detected within the specified range, the robot may be directed to "stop."
-
-   f) Visual Feedback:
-
-        The code provides visual feedback by annotating the original camera frames with drawn rectangles and lines. These annotations serve to visually indicate the 
-        detected color regions and the decision-making process in real-time.
+        Based on the positions of these boundinhg rectangles within the frames, the code makes navigation decisions for the robot.
+   
+        If a red marker is within a specific x-coordinate range, the code may instruct the Arduino to make the robot to turn right by giving power to a single pin that is 
+        connected to the arduino, which is then detected by the Arduino using digitalRead function.
+   
+        If a green marker falls within a certain x-coordinate range, the code may instruct the Arduino to make the the robot to turn left by giving power to a single pin 
+        that is connected to the arduino, which is then detected by the Arduino using digitalRead function.
+   
+        If neither color marker is detected within the specified range, the Arduino is directed to make the robot continue with obstacle avoidance.
 
    g) Continuous Operation:
 
