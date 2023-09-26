@@ -1,3 +1,9 @@
+# Our-Team-
+Vaishant - Responsible for coding and hardware.
+Mubeen - Responsible for placement of electromechanical components and chassis structuring.
+Mr.Thomas - Coach
+Ms.Hemalatha - Team Coordinator
+
 # About-Our-Team-
 Mubeen and Vaishant are two young technology enthusiasts who have been working on various coding and robotics projects together for over two years. They both share a passion for innovation and a vision for how technology can make a positive impact in the world. 
 
@@ -5,20 +11,30 @@ Mubeen has a creative mind and natural talent for designing futuristic concepts.
 Vaishant's strength lies in coding and programming. He is proficient in over five programming languages and has helped bring Mubeen's designs to life through software. Vaishant provides constructive criticism and feedback that helps them improve their work. His ambition, like Mubeen's, is to work as a robotics engineer. 
 
 Together, Mubeen and Vaishant complement each other's skills and work well as a team. They have gained valuable experience from the small competitions they have participated in so far, and they hope that this is just the beginning of bigger things to come.​
+
 # About-The-Car-
 
-# Electromechanical-Components-
+## Electromechanical-Components-
+
+1) 12v dc motor with gears
+
+
+2) MG996R Servo motor
+
+3) Lipo-battery
+
+4) 
 
 
 
 
-# The-Chassis-
+## The-Chassis-
 
 For the chasis we have used a readymade chasis that can support the ackerman's steering mechanism. It is run by a single 12v dc motor.
 
 ![chasis measurements](https://probots.co.in/pub/media/catalog/product/cache/d8ddd0f9b0cd008b57085cd218b48832/p/r/probots_metal_smart_racing_platform_for_arduino_raspberry_pi__6.jpeg)
 
-# The-Mechanism-Used-For-Steering-
+## The-Mechanism-Used-For-Steering-
 For the steering system we have used the ackerman's steering mechanism. We chose this because this system had satisfied all our expectations and would work best for our robot. We had researched immensely to find the steering system that would be best for our robot. We had tested multiple steering systems like rack and pinion steering, electronic rear motor steering, 4 wheel steering and hydraulic steering. But all of these mechanisms had many setbacks that would slow down our robot. The perfect mechanism was servo based ackerman's steering. It had great speed and accurate turning even on sharp turn's.
 
 ![steering mechanism](https://content.instructables.com/FA5/WOWE/J0X5B80H/FA5WOWEJ0X5B80H.png?auto=webp&frame=1&crop=3:2&fit=bounds&md=297a80991ec822f92a05d6a451b578e0)
@@ -50,7 +66,7 @@ We had chosen this steering system mainly because of these factors :-
 
 The other steering mechanism lacked in atleast 2 of the above factors, So evidently Ackerman's mechanism was our best choice.
   
-# The-Movement-Mechanism- 
+## The-Movement-Mechanism- 
 
 The movement of the robot is completely based on a single 12v dc motor. This motor controls the rear axle of the robot using gear's. This gear mechanism was made using 2 
 spur gears. One large spur gear and one small gear. The small spur gear is connected to the rear axle of the car, so it is responsible for the rotation of the wheels and the large gear transfers the energy of the motor to the small gear for the wheels to rotate.
@@ -61,7 +77,7 @@ spur gears. One large spur gear and one small gear. The small spur gear is conne
 
 ![gear pic](https://probots.co.in/pub/media/catalog/product/cache/d8ddd0f9b0cd008b57085cd218b48832/p/r/probots-4wd-chassis-smart-car-s3003-metal-servo.jpeg)
 
-# The-Wheels-
+## The-Wheels-
 
 The robot contains high quality rubber wheels with measurements suitable for the robots size and weight. The wheels measurements are also great for the ackerman's mechanism. These wheels also have bearings in them to make their movement smoother.
 
@@ -112,6 +128,25 @@ We have mainly divided the robot's functionality into two main parts, which are 
 
         The entire computer vision pipeline operates within a continuous loop. This loop allows the robot to continually adapt and respond to changes in the positions of 
         the color markers within its environment, enabling real-time color-based navigation.
+
+2) Lap Detection:-
+
+   The lap detection in the vehicle is done using a TCS-34725 RGB light colour sensor.
+   
+   ![TCS 34725 module](https://www.sunrom.com/media/product/299.jpg)
+
+   It is a very accurate and fast colour sensor. It recieves the rgb values of the 
+   surface it is used on and based on these values we can decide what shade of red, green or blue the colour of the surface is. As we know, in the RGB reading the red 
+   value would be greater than the green and blue values. so if the arduino senses a spike of red in the data recieved from the colour sensor it means the colour detected 
+   would be orange with respect to the game field. So using a loop the arduino makes a count of every red spike it detects and when the count reaches to twelve, after a 
+   certain time period the program would stop.
+
+3) Obstacle avoidance:-
+
+   The obstacle avoidance is taken care of by the Arduino and 3 ultrasonic sensors, placed in the left, right and the front part of the robot. First the distance is 
+   measured from each of these ultrasonic sensors, and the robot simply moves to the side where the distance is maximum. However there is a high chance of error in this 
+   algorithm if the speed, turn angles and time is not coordinated. So the robot is well calibrated with predefined values of speed and other factors. The math.h library 
+   is used to find the max distance using the max function.
 
    
    
