@@ -1,13 +1,16 @@
 # Our-Team-
-Vaishant - Responsible for coding and hardware.
-Mubeen - Responsible for placement of electromechanical components and chassis structuring.
+Vaishant - responsible for coding and hardware.
+
+Mubeen - responsible for the placement of electromechanical components and chassis structuring.
+
 Mr.Thomas - Coach
+
 Ms.Hemalatha - Team Coordinator
 
 # About-Our-Team-
-Mubeen and Vaishant are two young technology enthusiasts who have been working on various coding and robotics projects together for over two years. They both share a passion for innovation and a vision for how technology can make a positive impact in the world. 
+Mubeen and Vaishant are two young technology enthusiasts who have been working on various coding and robotics projects together for over two years. They both share a passion for innovation and a vision for how technology can make a positive impact on the world.
 
-Mubeen has a creative mind and natural talent for designing futuristic concepts. He has participated in several competitions related to car design and robotics, and his ambition is to become a robotics engineer. He strives for excellence and thinks about the possibilities of future developments. 
+Mubeen has a creative mind and a natural talent for designing futuristic concepts. He has participated in several competitions related to car design and robotics, and his ambition is to become a robotics engineer. He strives for excellence and thinks about the possibilities of future developments. 
 Vaishant's strength lies in coding and programming. He is proficient in over five programming languages and has helped bring Mubeen's designs to life through software. Vaishant provides constructive criticism and feedback that helps them improve their work. His ambition, like Mubeen's, is to work as a robotics engineer. 
 
 Together, Mubeen and Vaishant complement each other's skills and work well as a team. They have gained valuable experience from the small competitions they have participated in so far, and they hope that this is just the beginning of bigger things to come.​
@@ -87,51 +90,52 @@ We have mainly divided the robot's functionality into two main parts, which are 
 
 1) Computer Vision :-
 
-   The computer vision component of the code is responsible for processing visual information captured by the Raspberry Pi camera module and making navigation decisions 
-   based on the detection of specific colors, namely red and green. The process involves the following key steps:
+   The Raspberry Pi camera module's visual data is processed by the computer vision part of the algorithm, which also determines where to go depending on the detection of 
+   certain colors, especially red and green. The procedure consists of the following crucial steps:
 
-   a) Frame Capture and Color Space Conversion:
+   a) Frame capture and conversion of color spaces:
 
-        The code continuously captures video frames from the camera, treating each frame as an image.
-        These frames are converted from the RGB color space to the HSV (Hue, Saturation, Value) color space. HSV separates color information from brightness and saturation.
+        Each video frame is treated as an image by the algorithm as it continuously takes video frames from the camera.
+        From the RGB color system to the HSV (Hue, Saturation, Value) color space, these frames are converted. Brightness and saturation are dissociated from color 
+        information using HSV.
   
-   b) Color Detection:
+   b) Detection of color:
 
-        Specific HSV color ranges are defined to identidfy red and green objects within the frames. These ranges specify the permissible values for hue, saturation, and 
-        brightness.
+        For the purpose of identifying red and green objects within the frames, specific HSV color ranges are defined. The acceptable hue, saturation, and brightness 
+        values are listed in these ranges.
 
-   c) Thresholding:
+   c)Thresholding:
 
-        After converting to HSV, the code applies thresholding to the frames. This process creates binary masks for red and green, where pixels matching the specified 
-        color ranges are highlighted in white, while others are set to black. This representation isolates regions where the desired colors are present.
+        The code thresholds the frames after converting them to HSV. Red and green binary masks are created using this procedure, with pixels matching the given color 
+        ranges being highlighted in white and the other pixels being set to black. This illustration highlights the areas that have the desired colors.
 
-   d) Region of Interest Detection:
+   d) Identifying a Region of Interest:
 
-        The code identifies regions of interest (ROIs) within the binary masks by detecting connected white regions. ROIs correspond to areas where the red and green 
-        colors are detected.
+        The code finds connected white patches to represent regions of interest (ROIs) within the binary masks. ROIs stand for regions of interest where red and green 
+        colors can be seen.
 
-        Bounding rectangles are computed around these ROIs to define their position and size.
+        To determine the location and size of these ROIs, bounding rectangles are computed around them.
 
-   e) Passing commands or data to Arduino:
+   f) Giving Arduino instructions or data:
 
-        Based on the positions of these boundinhg rectangles within the frames, the code makes navigation decisions for the robot.
+        The programming directs the robot's navigation based on the locations of these bounding rectangles inside the frames.
    
-        If a red marker is within a specific x-coordinate range, the code may instruct the Arduino to make the robot to turn right by giving power to a single pin that is 
-        connected to the arduino, which is then detected by the Arduino using digitalRead function.
+        The code may command the Arduino to turn the robot right if a red marker is present within a specified x-coordinate range by powering a single pin attached to the 
+        Arduino, which is then recognized by the Arduino using the digitalRead function.
    
-        If a green marker falls within a certain x-coordinate range, the code may instruct the Arduino to make the the robot to turn left by giving power to a single pin 
-        that is connected to the arduino, which is then detected by the Arduino using digitalRead function.
+        The code may direct the Arduino to turn the robot left by powering a single pin that is linked to the Arduino, which is then recognized by the Arduino using the 
+        digitalRead function, if a green marker is present within a specific x-coordinate range.
    
-        If neither color marker is detected within the specified range, the Arduino is directed to make the robot continue with obstacle avoidance.
+        If neither color marker is found inside the designated range, the Arduino is instructed to instruct the robot to keep avoiding obstacles.
 
-   g) Continuous Operation:
+   g) Constant Activity:
 
-        The entire computer vision pipeline operates within a continuous loop. This loop allows the robot to continually adapt and respond to changes in the positions of 
-        the color markers within its environment, enabling real-time color-based navigation.
+        the framework of which the entire computer vision pipeline is an ongoing cycle. Real-time color-based navigation is made possible by this loop, which enables the 
+        robot to continuously adapt and react to changes in the placements of the color markers inside its environment.
 
 2) Lap Detection:-
 
-   The lap detection in the vehicle is done using a TCS-34725 RGB light colour sensor.
+   The lap detection in the vehicle is done using a TCS-34725 RGB light col our sensor.
    
    ![TCS 34725 module](https://www.sunrom.com/media/product/299.jpg)
 
