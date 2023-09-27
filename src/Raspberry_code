@@ -1,0 +1,116 @@
+import RPi.GPIO as GPIO
+import time
+import cv2
+from picamera import PiCamera
+from picamera.array import PiRGBArray
+pwmPin=18
+camera = PiCamera()
+GPIO.setwarnings(False)
+# GPIO setup for motor control
+motor_pin_left = 15  # Replace with your left motor GPIO pin
+motor_pin_right =12  # Replace with your right motor GPIO pin
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(13,GPIO.OUT)
+GPIO.setup(motor_pin_left, GPIO.OUT)
+GPIO.setup(motor_pin_right, GPIO.OUT)
+GPIO.setup(pwmPin,GPIO.OUT)
+pwm=GPIO.PWM(pwmPin,50)
+# Function to control motors
+def turn_left():
+    GPIO.output(motor_pin_left, GPIO.LOW)
+    GPIO.output(motor_pin_right, GPIO.HIGH)
+    print("turn left")
+
+def turn_right():
+    pwm.ChangeDutyCycle(11)
+    time.sleep(.1)
+    print("turn right")
+def stop_motors():
+    pwm.ChangeDutyCycle(0)
+    print("stop")
+
+
+# Initialize the Pi camera
+#camera = cv2.VideoCapture(1)  # Use 0 for the built-in camera, or 1 for an external camera
+camera.resolution = (640, 400)
+camera.framerate = 30
+raw_capture = PiRGBArray(camera, size=(640,400))
+time.sleep(2)
+
+
+try:
+    for frame in camera.capture_continuous(raw_capture,format="bgr", use_video_port=True):
+        image = frame.array
+
+
+
+        #_, frame = camera.read()
+        #camera.capture('image.jpg')
+        #frame = cv2.imread('image.jpg')
+
+        # Convert the frame to HSV color space
+        hsv_frame = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+        # Define color ranges for red and green (you may need to adjust these)
+        lower_red = (0, 100, 100)
+        upper_red = (10, 255, 255)
+        lower_green = (50, 100, 100)
+        upper_green = (70, 255, 255)
+
+        # Threshold the frame to detect red and green
+        mask_red = cv2.inRange(hsv_frame, lower_red, upper_red)
+        mask_green = cv2.inRange(hsv_frame, lower_green, upper_green)
+
+        bbox1 = cv2.boundingRect(mask_red)
+        bbox2 = cv2.boundingRect(mask_green)
+
+        if bbox1 is not None:
+            #print("object detected")
+            x,y,w,h = bbox1
+            x1,y1,w1,h1 = bbox2
+            cv2.rectangle(image, (x,y), (x+w, y+h),(0,0,255),2)
+            cv2.rectangle(image, (x1,y1), (x1+w1, y1+h1),(0,255,0),2)
+            #cv2.line(image, (x+int(w/2),0), (x+int(w/2),400), (0,255,255),1)
+            #cv2.line(image, (x1+int(w1/2),0), (x1+int(w1/2),400), (0,255,0),1)
+            cv2.line(image, (200,0), (200,400), (0,255,255),1)
+            cv2.line(image, (440,0), (440,400), (0,255,255),1)
+
+            if x1+int(w1/2) > 200 and x1+int(w1/2) < 440 :
+                cv2.line(image, (x1+int(w1/2),0), (x1+int(w1/2),400), (0,0,255),1)
+                #print ("turn right")
+            else:
+                cv2.line(image, (x1+int(w1/2),0), (x1+int(w1/2),400), (0,255,0),1)
+
+            if x+int(w/2) > 200 and x+int(w/2) < 440 :
+                cv2.line(image, (x+int(w/2),0), (x+int(w/2),400), (0,0,255),1)
+            else:
+                cv2.line(image, (x+int(w/2),0), (x+int(w/2),400), (0,255,0),1)
+
+
+
+
+        else:
+            print("none")
+
+
+        # Check for red and green in the frame
+        if cv2.countNonZero(mask_red) > 1000:
+            turn_right()
+        elif cv2.countNonZero(mask_green) > 1000:
+            turn_left()
+        else:
+            stop_motors()
+
+        # Display the processed frame (for debugging)
+        cv2.imshow("Color Detection", image)
+        raw_capture.truncate(0)
+
+        # Press 'q' to exit the loop
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+finally:
+    # Clean up GPIO and camera
+    GPIO.cleanup()
+    camera.close()
+    cv2.destroyAllWindows()
