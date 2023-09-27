@@ -1,0 +1,165 @@
+#include <Servo.h>
+#include <math.h>
+int TRIG1 = 52; //left
+int ECHO1 = 53;
+int TRIG2 = 15;//right
+int ECHO2 = 14;
+int TRIG3 = 42;//mid
+int ECHO3 = 43;
+int dir ;
+int left;
+int right;
+int mid;
+Servo Servo;
+int motorb = 5;
+int motorf = 6;
+int speed_pin = 7;
+int servo_pin = 3;
+int green_recieve = 32;
+int red_recieve = 33;
+
+
+void steer_left();
+void steer_right();
+
+
+void setup() {
+ 
+  Serial.begin(9600);
+  pinMode(motorf, OUTPUT);
+  pinMode(motorb, OUTPUT);
+  pinMode(speed_pin, OUTPUT);
+  Servo.attach(servo_pin);
+
+
+
+
+  pinMode(TRIG1, OUTPUT);
+  pinMode(ECHO1, INPUT);
+  pinMode(TRIG2, OUTPUT);
+  pinMode(ECHO2, INPUT);
+  pinMode(TRIG3, OUTPUT);
+  pinMode(ECHO3, INPUT);
+  analogWrite(speed_pin,190);
+}
+
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+
+  digitalWrite(TRIG1, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG1, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG1, LOW);
+  int duration1 = pulseIn(ECHO1, HIGH);
+  left = duration1 * 0.0344 / 2.0;
+
+
+
+
+  digitalWrite(TRIG2, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG2, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG2, LOW);
+  int duration2 = pulseIn(ECHO2, HIGH);
+  right = duration2 * 0.0344 / 2.0;
+ 
+
+
+  digitalWrite(TRIG3, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG3, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG3, LOW);
+  int duration3 = pulseIn(ECHO3, HIGH);
+  mid = duration3 * 0.0344 / 2.0;
+
+
+  dir = max (mid, max (right, left));
+ 
+   if (dir==mid){
+   wheels_centered();
+   Serial.print("forward");
+  }
+  else if (dir==left){
+
+
+   steer_left();
+   Serial.print("left");
+   delay(20);  
+  }
+  else if (dir==right){
+
+
+   steer_right();
+   Serial.print("right");
+   delay(20);
+  }
+
+
+  else if (dir==left && dir==mid && dir==right ){
+   Serial.print("forward ,infinty");
+  }
+
+
+  else {
+
+
+    delay(500);
+    Serial.print(left);
+    Serial.print(",");
+    Serial.print(mid);
+    Serial.print(",");
+    Serial.print(right);
+    Serial.print("\n");
+    Serial.print(dir);
+    Serial.print("\n");
+ 
+ }
+    delay(500);
+    Serial.print("\n");
+
+
+    Serial.print(left);
+    Serial.print(",");
+    Serial.print(mid);
+    Serial.print(",");
+    Serial.print(right);
+    Serial.print(",");
+    Serial.print("\n");
+    Serial.print(dir);
+    Serial.print("\n");
+}
+
+
+void wheels_centered() {
+
+
+  digitalWrite(motorf,HIGH);
+  digitalWrite(motorb,LOW);
+  Servo.write(90);
+ 
+}
+
+
+void steer_left() {
+ 
+  digitalWrite(motorf,HIGH);
+  digitalWrite(motorb,LOW);
+  Servo.write(60);
+}
+
+
+void steer_right() {
+
+
+  digitalWrite(motorf,HIGH);
+  digitalWrite(motorb,LOW);
+  Servo.write(120);
+
+
+ 
+}
