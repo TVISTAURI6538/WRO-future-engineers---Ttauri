@@ -84,9 +84,9 @@ spur gears. One large spur gear and one small gear. The small spur gear is conne
 
 The robot contains high quality rubber wheels with measurements suitable for the robots size and weight. The wheels measurements are also great for the ackerman's mechanism. These wheels also have bearings in them to make their movement smoother.
 
-# Robot-functionality
+# Robot-Algorithm-
 
-We have mainly divided the robot's functionality into two main parts, which are :-
+The robots algorithm is mainly divided into three main parts, which are :-
 
 1) Computer Vision :-
 
@@ -151,6 +151,14 @@ We have mainly divided the robot's functionality into two main parts, which are 
    measured from each of these ultrasonic sensors, and the robot simply moves to the side where the distance is maximum. However there is a high chance of error in this 
    algorithm if the speed, turn angles and time is not coordinated. So the robot is well calibrated with predefined values of speed and other factors. The math.h library 
    is used to find the max distance using the max function.
+
+## Conclusion-
+
+This algorithm is based on a single Raspberry Pi and an Arduino MEGA. The Arduino is responsible for the movement and management of all sensors of the robot, while the Raspberry PI is responsible for the processing of the image data recieved from the camera and decision making based on the data recieved. It can also be called as the command centre of the obstacle challenge as it passes commands to the arduino in order for the robot to react to the red and green traffic signs or to continue with the obstacle avoidance.
+
+
+
+
 
    
    
