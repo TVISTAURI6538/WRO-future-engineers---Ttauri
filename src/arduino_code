@@ -1,38 +1,41 @@
-#include <Servo.h>
-#include <math.h>
-int TRIG1 = 52; //left
+#include <Servo.h>                         // adding libraries
+#include <Wire.h>
+#include <Adafruit_TCS34725.h>
+
+
+Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);           // setting up colour sensors and necessary variables
+float red, green, blue;
+int i = 0;
+
+int TRIG1 = 52; // left
 int ECHO1 = 53;
-int TRIG2 = 15;//right
+int TRIG2 = 15; // right             // defining pins
 int ECHO2 = 14;
-int TRIG3 = 42;//mid
-int ECHO3 = 43;
-int dir ;
+int TRIG3 = 41; // mid
+int ECHO3 = 40;
 int left;
 int right;
 int mid;
 Servo Servo;
 int motorb = 5;
 int motorf = 6;
-int speed_pin = 7;
-int servo_pin = 3;
+int speed_pin = 4;
+int servo_pin = 9;
 int green_recieve = 32;
 int red_recieve = 33;
 
-
+void wheels_centered();              // stating functions
 void steer_left();
 void steer_right();
-
+void Stop();
 
 void setup() {
- 
   Serial.begin(9600);
+
   pinMode(motorf, OUTPUT);
-  pinMode(motorb, OUTPUT);
+  pinMode(motorb, OUTPUT);                        // setting up INPUT and OUTPUT
   pinMode(speed_pin, OUTPUT);
   Servo.attach(servo_pin);
-
-
-
 
   pinMode(TRIG1, OUTPUT);
   pinMode(ECHO1, INPUT);
@@ -40,126 +43,130 @@ void setup() {
   pinMode(ECHO2, INPUT);
   pinMode(TRIG3, OUTPUT);
   pinMode(ECHO3, INPUT);
-  analogWrite(speed_pin,190);
+  analogWrite(speed_pin, 170);
 }
-
 
 void loop() {
   // put your main code here, to run repeatedly:
+  tcs.setInterrupt(false);  // turn on LED                     // colour sensor initialization
+  delay(60);  // takes 50ms to read
+  tcs.getRGB(&red, &green, &blue);
+  tcs.setInterrupt(true);  // turn off LED
+  
 
-
+  if(red>(blue+20)){                         // checks for a red spike (orange)
+   i++;                                      // starts adds 1 to the variable every time orange is detected.
+   delay(2000);   
+  }
+   else{   }
+  
   digitalWrite(TRIG1, LOW);
   delayMicroseconds(2);
   digitalWrite(TRIG1, HIGH);
-  delayMicroseconds(10);
+  delayMicroseconds(5);
   digitalWrite(TRIG1, LOW);
-  int duration1 = pulseIn(ECHO1, HIGH);
-  left = duration1 * 0.0344 / 2.0;
-
-
-
+  long duration1 = pulseIn(ECHO1, HIGH);
+  left = duration1 * (0.034 / 2);
 
   digitalWrite(TRIG2, LOW);
   delayMicroseconds(2);
   digitalWrite(TRIG2, HIGH);
-  delayMicroseconds(10);
+  delayMicroseconds(5);                                                 // calculating distances from ultrasonic sensors
   digitalWrite(TRIG2, LOW);
-  int duration2 = pulseIn(ECHO2, HIGH);
-  right = duration2 * 0.0344 / 2.0;
- 
-
+  long duration2 = pulseIn(ECHO2, HIGH);
+  right = duration2 * (0.034 / 2);
 
   digitalWrite(TRIG3, LOW);
   delayMicroseconds(2);
   digitalWrite(TRIG3, HIGH);
-  delayMicroseconds(10);
+  delayMicroseconds(5);
   digitalWrite(TRIG3, LOW);
-  int duration3 = pulseIn(ECHO3, HIGH);
-  mid = duration3 * 0.0344 / 2.0;
+  long duration3 = pulseIn(ECHO3, HIGH);
+  mid = duration3 * (0.034 / 2);
 
 
-  dir = max (mid, max (right, left));
- 
-   if (dir==mid){
-   wheels_centered();
-   Serial.print("forward");
-  }
-  else if (dir==left){
+  if (mid > right && mid > left) {                             // checks if central distance is higher than right and left.
 
+    wheels_centered();
 
-   steer_left();
-   Serial.print("left");
-   delay(20);  
-  }
-  else if (dir==right){
+    if (right > left) {
 
+      steer_right();                                            // manouvering with distances
+      delay(100);
+    }
 
-   steer_right();
-   Serial.print("right");
-   delay(20);
-  }
+    else if ( left > right) {
 
+      steer_left();
+      delay(100);
+    }
 
-  else if (dir==left && dir==mid && dir==right ){
-   Serial.print("forward ,infinty");
+    else {
+
+      wheels_centered();
+    }
   }
 
+    else {
+      ("continue");
+    }
 
-  else {
+  if (mid < 100) {                                   // checks if central distance is less for decision making in sharp turns.
 
+      if (right > left) {
 
-    delay(500);
-    Serial.print(left);
-    Serial.print(",");
-    Serial.print(mid);
-    Serial.print(",");
-    Serial.print(right);
-    Serial.print("\n");
-    Serial.print(dir);
-    Serial.print("\n");
- 
- }
-    delay(500);
-    Serial.print("\n");
+        steer_right();
+        delay(500);
+      }
 
+      else {
 
-    Serial.print(left);
-    Serial.print(",");
-    Serial.print(mid);
-    Serial.print(",");
-    Serial.print(right);
-    Serial.print(",");
-    Serial.print("\n");
-    Serial.print(dir);
-    Serial.print("\n");
+        steer_left();
+        delay(500);
+      }
+  }
+
+  else{
+
+    Serial.print("go ahead");
+  }
+    
+  delay(500);
+  Serial.print("\n");
+  Serial.print(left);
+  Serial.print(",");
+  Serial.print(mid);
+  Serial.print(",");
+  Serial.print(right);
+  Serial.print("\n");
+  
+  if (i==12) {                                       //stops the program after a delay when lapcount reaches 12
+
+    delay(2000);
+    Stop();
+    exit(0);
+  }
+
 }
-
-
 void wheels_centered() {
-
-
-  digitalWrite(motorf,HIGH);
-  digitalWrite(motorb,LOW);
+  digitalWrite(motorf, HIGH);                                           //FUNCTIONS
+  digitalWrite(motorb, LOW);
   Servo.write(90);
- 
 }
-
 
 void steer_left() {
- 
-  digitalWrite(motorf,HIGH);
-  digitalWrite(motorb,LOW);
+  digitalWrite(motorf, HIGH);
+  digitalWrite(motorb, LOW);
   Servo.write(60);
 }
 
-
 void steer_right() {
-
-
-  digitalWrite(motorf,HIGH);
-  digitalWrite(motorb,LOW);
+  digitalWrite(motorf, HIGH);
+  digitalWrite(motorb, LOW);
   Servo.write(120);
+}
 
-
- 
+void Stop() {
+  digitalWrite(motorf, LOW);
+  digitalWrite(motorb, LOW);
 }
